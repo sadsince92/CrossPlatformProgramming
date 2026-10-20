@@ -348,7 +348,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Sprite_Mario_3
+      name: _MarioAttack
       rect:
         serializedVersion: 2
         x: 54
@@ -370,7 +370,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Sprite_Mario_4
+      name: _MarioAttack1
       rect:
         serializedVersion: 2
         x: 71
@@ -392,7 +392,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Sprite_Mario_5
+      name: _MarioAttack2
       rect:
         serializedVersion: 2
         x: 88
@@ -1659,7 +1659,6 @@ TextureImporter:
       Sprite_Mario_27: -1724382975095085423
       Sprite_Mario_28: 4008937936191787000
       Sprite_Mario_29: 3336705031637967656
-      Sprite_Mario_3: 1554904934580016266
       Sprite_Mario_30: -5444284473453412056
       Sprite_Mario_31: -3239394828119450290
       Sprite_Mario_32: 5513065419899303231
@@ -1670,7 +1669,6 @@ TextureImporter:
       Sprite_Mario_37: 8706566674536967793
       Sprite_Mario_38: -3604062871113111416
       Sprite_Mario_39: -4622941222364186104
-      Sprite_Mario_4: -3171580361127328770
       Sprite_Mario_40: 5778968304725270991
       Sprite_Mario_41: 7599126599415133676
       Sprite_Mario_42: 6996871328585145904
@@ -1681,7 +1679,6 @@ TextureImporter:
       Sprite_Mario_47: 3302078408146908689
       Sprite_Mario_48: -4040994371160570336
       Sprite_Mario_49: 2070263079612885921
-      Sprite_Mario_5: -7207716073158996441
       Sprite_Mario_50: -5021473000565013323
       Sprite_Mario_51: -3917910848853407703
       Sprite_Mario_52: 2024578721505582386
@@ -1697,6 +1694,9 @@ TextureImporter:
       Sprite_Mario_7: -1236749345658543323
       Sprite_Mario_8: -5672653749854861051
       Sprite_Mario_9: 3387244394707617170
+      _MarioAttack: 1554904934580016266
+      _MarioAttack1: -3171580361127328770
+      _MarioAttack2: -7207716073158996441
       _MarioIdle: 4638078165498462608
       _MarioWalk: 7535359878243092818
       _MarioWalk1: -3905991941800648080

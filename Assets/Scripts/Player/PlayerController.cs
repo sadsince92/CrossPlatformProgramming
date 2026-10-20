@@ -25,6 +25,8 @@ public class PlayerController : MonoBehaviour
     private SpriteRenderer sr;
     private BoxCollider2D bc;
     private Animator anim;
+    public GameObject fireballPrefab;
+    public Transform firePoint;
     #endregion
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -48,6 +50,7 @@ public class PlayerController : MonoBehaviour
 
         float moveX = Input.GetAxisRaw("Horizontal");
         bool jumpPresssed = Input.GetButtonDown("Jump");
+        bool attackPressed = Input.GetKeyDown(KeyCode.LeftShift);
 
         rb.linearVelocityX = moveX * moveSpeed;
 
@@ -56,7 +59,12 @@ public class PlayerController : MonoBehaviour
             rb.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
             isGrounded = false;
         }
-
+        if (attackPressed)
+        {
+            Debug.Log("Attack button pressed!");
+            anim.SetTrigger("Attack");
+            ShootFireball();
+        }
         if (moveX != 0f) SpriteFlip(moveX);
 
         anim.SetBool("isGrounded", isGrounded);
@@ -64,10 +72,23 @@ public class PlayerController : MonoBehaviour
     }
 
     void SpriteFlip(float moveX) => sr.flipX = (moveX < 0f);
-    //{
-    //    if (sr.flipX && moveX > 0f || !sr.flipX && moveX< 0f)
-    //    {
-    //        sr.flipX = !sr.flipX;
-    //    }
-    //}
+    void ShootFireball()
+    {
+        float direction = sr.flipX ? -1f : 1f;
+
+        Vector3 spawnPosition = firePoint.position;
+
+        spawnPosition.x = transform.position.x +
+            Mathf.Abs(firePoint.localPosition.x) * direction;
+
+        GameObject fireball = Instantiate(
+            fireballPrefab,
+            spawnPosition,
+            Quaternion.identity
+        );
+
+        Rigidbody2D fireballRb = fireball.GetComponent<Rigidbody2D>();
+
+        fireballRb.linearVelocityX = direction * 8f;
+    }
 }
