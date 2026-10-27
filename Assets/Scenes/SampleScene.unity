@@ -965,6 +965,7 @@ GameObject:
   - component: {fileID: 478094075}
   - component: {fileID: 478094077}
   - component: {fileID: 478094078}
+  - component: {fileID: 478094079}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -1041,11 +1042,10 @@ Transform:
   m_GameObject: {fileID: 478094072}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -77.23, y: -5.48, z: 0}
+  m_LocalPosition: {x: -77.29, y: -5.537, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 519420032}
   - {fileID: 776903597}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1072,7 +1072,7 @@ Rigidbody2D:
   m_ExcludeLayers:
     serializedVersion: 2
     m_Bits: 0
-  m_Interpolate: 0
+  m_Interpolate: 1
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
@@ -1136,12 +1136,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::PlayerController
   moveSpeed: 5
   jumpForce: 10
-  groundLayer:
-    serializedVersion: 2
-    m_Bits: 8
-  groundCheckRadius: 0.2
+  fireballSpeed: 8
+  fireballVerticalSpeed: -2
   fireballPrefab: {fileID: 5925556254457110815, guid: 74a321a62e4611c448d7f5d3e6daec46, type: 3}
   firePoint: {fileID: 776903597}
+  hasFireballPowerUp: 0
 --- !u!95 &478094078
 Animator:
   serializedVersion: 7
@@ -1164,6 +1163,22 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &478094079
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 478094072}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8ea39bb86e6f204499758b33e84829f9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::GroundCheck
+  groundLayer:
+    serializedVersion: 2
+    m_Bits: 8
+  groundCheckRadius: 0.2
 --- !u!1 &514766970
 GameObject:
   m_ObjectHideFlags: 0
@@ -1271,6 +1286,7 @@ GameObject:
   - component: {fileID: 519420031}
   - component: {fileID: 519420029}
   - component: {fileID: 519420030}
+  - component: {fileID: 519420033}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -1390,12 +1406,28 @@ Transform:
   m_GameObject: {fileID: 519420028}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 7.3, y: 3.5699997, z: -10}
+  m_LocalPosition: {x: -69.9, y: -2.02, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 478094074}
+  m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &519420033
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 519420028}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e93b781bf04f78144817778fbadf958f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::cameraFollow
+  minXPos: -69.92
+  maxXPos: 72.06
+  target: {fileID: 478094074}
+  cameraSpeed: 5
 --- !u!1 &553597840
 GameObject:
   m_ObjectHideFlags: 0
@@ -1558,11 +1590,15 @@ MonoBehaviour:
     - rid: 3633867703799513092
       type: {class: Light2DProviderSources, ns: UnityEngine.Rendering.Universal, asm: Unity.RenderPipelines.Universal.2D.Runtime}
       data:
-        m_SelectedHashCode: 0
+        m_SelectedHashCode: 4
         m_SelectedSource:
           rid: -2
         m_Provider2DCache:
-          rid: -2
+          rid: 3633867862902571094
+    - rid: 3633867862902571094
+      type: {class: 'Provider2DCache`1[[UnityEngine.Rendering.Universal.Light2DProvider, Unity.RenderPipelines.Universal.2D.Runtime]]', ns: UnityEngine.Rendering.Universal, asm: Unity.RenderPipelines.Universal.2D.Runtime}
+      data:
+        m_Cache: []
 --- !u!4 &619394802
 Transform:
   m_ObjectHideFlags: 0
@@ -1963,7 +1999,7 @@ GameObject:
   - component: {fileID: 1028361454}
   - component: {fileID: 1028361456}
   - component: {fileID: 1028361455}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: LowerEdge (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2498,7 +2534,7 @@ GameObject:
   - component: {fileID: 1261513997}
   - component: {fileID: 1261513999}
   - component: {fileID: 1261513998}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: RightEdge
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2593,7 +2629,7 @@ GameObject:
   - component: {fileID: 1388745301}
   - component: {fileID: 1388745303}
   - component: {fileID: 1388745302}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: LowerEdge (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2973,7 +3009,7 @@ GameObject:
   - component: {fileID: 1467407293}
   - component: {fileID: 1467407295}
   - component: {fileID: 1467407294}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: LeftEdge
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3241,7 +3277,7 @@ GameObject:
   - component: {fileID: 1662533351}
   - component: {fileID: 1662533353}
   - component: {fileID: 1662533352}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: LowerEdge
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3412,7 +3448,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1690908612}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: LevelBoundaries
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3859,7 +3895,7 @@ GameObject:
   - component: {fileID: 1940799521}
   - component: {fileID: 1940799523}
   - component: {fileID: 1940799522}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: LowerEdge (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3954,7 +3990,7 @@ GameObject:
   - component: {fileID: 1991389692}
   - component: {fileID: 1991389694}
   - component: {fileID: 1991389693}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: SkyEdge
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4116,11 +4152,70 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 0.918396, y: 1.9674773}
   m_EdgeRadius: 0
+--- !u!1001 &2259497113340201580
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 372507087464573275, guid: 5735d754ed318e14eae2ccf0cc344038, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -34.0042
+      objectReference: {fileID: 0}
+    - target: {fileID: 372507087464573275, guid: 5735d754ed318e14eae2ccf0cc344038, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -2.6233
+      objectReference: {fileID: 0}
+    - target: {fileID: 372507087464573275, guid: 5735d754ed318e14eae2ccf0cc344038, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 372507087464573275, guid: 5735d754ed318e14eae2ccf0cc344038, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 372507087464573275, guid: 5735d754ed318e14eae2ccf0cc344038, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 372507087464573275, guid: 5735d754ed318e14eae2ccf0cc344038, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 372507087464573275, guid: 5735d754ed318e14eae2ccf0cc344038, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 372507087464573275, guid: 5735d754ed318e14eae2ccf0cc344038, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 372507087464573275, guid: 5735d754ed318e14eae2ccf0cc344038, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 372507087464573275, guid: 5735d754ed318e14eae2ccf0cc344038, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6742425851330072545, guid: 5735d754ed318e14eae2ccf0cc344038, type: 3}
+      propertyPath: m_Name
+      value: FireBallPowerUp
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 5735d754ed318e14eae2ccf0cc344038, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
   - {fileID: 619394802}
   - {fileID: 826304212}
+  - {fileID: 519420032}
   - {fileID: 478094074}
   - {fileID: 1144741127}
+  - {fileID: 2259497113340201580}

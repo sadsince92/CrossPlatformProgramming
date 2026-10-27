@@ -3502,7 +3502,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Sprite_Enemies_61
+      name: PowerUpFireBall
       rect:
         serializedVersion: 2
         x: 268
@@ -17287,6 +17287,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
+      PowerUpFireBall: -8702983505336315541
       Sprite_Enemies_0: 764029468473576725
       Sprite_Enemies_1: -6284743126234988054
       Sprite_Enemies_10: 434443584825584821
@@ -17855,7 +17856,6 @@ TextureImporter:
       Sprite_Enemies_607: 8489004635490954630
       Sprite_Enemies_608: 757461225238518542
       Sprite_Enemies_609: -7279248425651291391
-      Sprite_Enemies_61: -8702983505336315541
       Sprite_Enemies_610: 4462568472292796651
       Sprite_Enemies_611: -5814971357426260697
       Sprite_Enemies_612: 6966228040889094559

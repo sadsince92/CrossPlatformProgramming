@@ -2,16 +2,15 @@ using UnityEngine;
 
 public class FireballController : MonoBehaviour
 {
-    private bool hasBeenVisible = false;
-
-    void OnBecameVisible()
+    public LayerMask groundLayer;
+    public float lifetime = 2f;
+    void Start()
     {
-        hasBeenVisible = true;
+        Destroy(gameObject, lifetime);
     }
-
-    void OnBecameInvisible()
+    void OnCollisionEnter2D(Collision2D collision)
     {
-        if (hasBeenVisible)
+        if (((1 << collision.gameObject.layer) & groundLayer.value) != 0)
         {
             Destroy(gameObject);
         }
