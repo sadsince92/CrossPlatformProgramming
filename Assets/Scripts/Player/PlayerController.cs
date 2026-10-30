@@ -44,7 +44,6 @@ public class PlayerController : MonoBehaviour
         float moveX = Input.GetAxisRaw("Horizontal");
         bool jumpPresssed = Input.GetButtonDown("Jump");
         bool attackPressed = Input.GetKeyDown(KeyCode.LeftShift);
-        bool upPressed = Input.GetKey(KeyCode.W);
 
         rb.linearVelocityX = moveX * moveSpeed;
 
@@ -52,15 +51,9 @@ public class PlayerController : MonoBehaviour
         {
             rb.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
             isGrounded = false;
-
-            if (upPressed)
-            {
-                anim.SetTrigger("JumpAttack");
-            }
         }
         if (attackPressed && hasFireballPowerUp)
         {
-            Debug.Log("Attack button pressed!");
             anim.SetTrigger("Attack");
             ShootFireball();
         }
